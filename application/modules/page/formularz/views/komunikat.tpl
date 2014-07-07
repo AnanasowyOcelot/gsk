@@ -1,0 +1,1 @@
+<div id="komunikat" style="text-align:center; padding:30px; font-size:30px; font-style:italic;">{$komunikat}</div>

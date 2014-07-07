@@ -1,0 +1,7 @@
+html #menuTop li a {
+    padding: 7px 24px 0 24px;
+}
+html #menuTop li a.active2 {
+    padding-left: 23px;
+    padding-right: 25px;
+}

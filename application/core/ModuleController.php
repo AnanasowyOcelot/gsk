@@ -1,0 +1,1 @@
+<?phpclass Core_ModuleController extends Core_Controller{	public function __construct()	{		parent::__construct();		$this->setTemplate('index');	}	public function setTemplate($s_nazwa)	{		$this->setTemplateDir(Core_Config::get('modules_path'));		$this->template = $this->modul . '/views/' . $s_nazwa;	}}

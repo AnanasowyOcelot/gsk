@@ -1,0 +1,18 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^www/page/(css|img|js|download|filmy|player)/(.*) www/page/$1/$2 [L]
+RewriteRule ^www/cms/(css|img|js|filemanager|tmp)/(.*) www/cms/$1/$2 [L]
+RewriteRule ^www/page/img.php /www/page/img.php [L]
+RewriteRule ^www/api/(.*) /www/api/index.php [L]
+RewriteRule ^tests/(.*) /tests/AllTests.php [L]
+RewriteRule ^testdata/(.*)/(.*) testdata/$1/$2 [L]
+RewriteRule ^images/(.*)/(.*) images/$1/$2 [L]
+RewriteRule ^filmy/(.*) /filmy/$1 [L]
+RewriteRule ^(libs)/(ckeditor)/(.*) $1/$2/$3 [L]
+RewriteRule ^(libs)/(filemanager)/(.*) $1/$2/$3 [L]
+RewriteRule (cms) www/cms/index.php [L,QSA]
+RewriteRule ^(.*)$ www/page/index.php [L,QSA]
+RewriteRule ^kontakt.html www/page/kontakt.html [L]
+

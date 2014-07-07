@@ -1,0 +1,1 @@
+{$box->opis.$jezyk_id}
