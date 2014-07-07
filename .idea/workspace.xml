@@ -26,8 +26,20 @@
       <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/cms/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="22" selection-start="1391" selection-end="1391" vertical-scroll-proportion="13.156863" vertical-offset="1266" max-vertical-offset="3417">
+            <state line="10" column="78" selection-start="282" selection-end="303" vertical-scroll-proportion="-2.3333333" vertical-offset="51" max-vertical-offset="3417">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="daabd3b6e6e5b6feb47c9f38d5ba4c257cd41075.file.mainLayout.tpl.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tmp/daabd3b6e6e5b6feb47c9f38d5ba4c257cd41075.file.mainLayout.tpl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="281" column="16" selection-start="12436" selection-end="12436" vertical-scroll-proportion="0.7439825" vertical-offset="4437" max-vertical-offset="5185">
+              <folding>
+                <element signature="e#6#154#0" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -50,10 +62,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.ini" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/configs/app.ini">
+      <file leaf-file-name="Config_File.class.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libs/smarty/libs/Config_File.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="19" selection-start="487" selection-end="487" vertical-scroll-proportion="0.6786427" vertical-offset="0" max-vertical-offset="501">
+            <state line="18" column="2" selection-start="774" selection-end="774" vertical-scroll-proportion="135.34616" vertical-offset="3825" max-vertical-offset="6715">
               <folding />
             </state>
           </provider>
@@ -63,6 +75,15 @@
         <entry file="file://$PROJECT_DIR$/application/model/Administrator.php">
           <provider selected="true" editor-type-id="text-editor">
             <state line="75" column="41" selection-start="2269" selection-end="2269" vertical-scroll-proportion="-15.153846" vertical-offset="881" max-vertical-offset="3451">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Smarty.class.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libs/smarty/libs/Smarty.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="7" selection-start="1011" selection-end="1011" vertical-scroll-proportion="-11.692307" vertical-offset="104" max-vertical-offset="33150">
               <folding />
             </state>
           </provider>
@@ -81,14 +102,16 @@
         <option value="$PROJECT_DIR$/www/cms/index.php" />
         <option value="$PROJECT_DIR$/application/modules/cms/login/Controller.php" />
         <option value="$PROJECT_DIR$/application/configs/app.ini" />
+        <option value="$PROJECT_DIR$/tmp/daabd3b6e6e5b6feb47c9f38d5ba4c257cd41075.file.mainLayout.tpl.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-13" />
-    <option name="width" value="1293" />
-    <option name="height" value="683" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1296" />
+    <option name="height" value="699" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -160,6 +183,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="tmp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gsk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gsk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="libs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -179,6 +216,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="smarty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gsk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gsk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smarty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -294,16 +353,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-13" y="0" width="1293" height="683" extended-state="1" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1296" height="699" extended-state="7" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32827324" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32780847" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25345248" sideWeight="0.67172676" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25283632" sideWeight="0.6721915" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -385,16 +444,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/cms/index.php">
+    <entry file="file://$PROJECT_DIR$/application/configs/app.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="22" selection-start="1391" selection-end="1391" vertical-scroll-proportion="13.156863" vertical-offset="1266" max-vertical-offset="3417">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/model/Administrator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="41" selection-start="2269" selection-end="2269" vertical-scroll-proportion="-15.153846" vertical-offset="881" max-vertical-offset="3451">
+        <state line="5" column="26" selection-start="247" selection-end="247" vertical-scroll-proportion="0.16966067" vertical-offset="0" max-vertical-offset="501">
           <folding />
         </state>
       </provider>
@@ -406,17 +458,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/smarty/libs/Smarty.class.php">
+    <entry file="file://$PROJECT_DIR$/libs/smarty/libs/Config_File.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="14" selection-start="1207" selection-end="1207" vertical-scroll-proportion="0.2900433" vertical-offset="359" max-vertical-offset="33150">
+        <state line="18" column="2" selection-start="774" selection-end="774" vertical-scroll-proportion="135.34616" vertical-offset="3825" max-vertical-offset="6715">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/configs/app.ini">
+    <entry file="file://$PROJECT_DIR$/libs/smarty/libs/Smarty.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="19" selection-start="487" selection-end="487" vertical-scroll-proportion="0.6786427" vertical-offset="0" max-vertical-offset="501">
+        <state line="24" column="7" selection-start="1011" selection-end="1011" vertical-scroll-proportion="-11.692307" vertical-offset="104" max-vertical-offset="33150">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/model/Administrator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="41" selection-start="2269" selection-end="2269" vertical-scroll-proportion="-15.153846" vertical-offset="881" max-vertical-offset="3451">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/cms/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="78" selection-start="282" selection-end="303" vertical-scroll-proportion="-2.3333333" vertical-offset="51" max-vertical-offset="3417">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tmp/daabd3b6e6e5b6feb47c9f38d5ba4c257cd41075.file.mainLayout.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="281" column="16" selection-start="12436" selection-end="12436" vertical-scroll-proportion="0.7439825" vertical-offset="4437" max-vertical-offset="5185">
+          <folding>
+            <element signature="e#6#154#0" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
