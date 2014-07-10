@@ -101,6 +101,39 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
         $response->setModuleTemplate("export");
         $orderMapper = new Model_Promocje_OrderMapper();
 
+        //$sql = 'SELECT * FROM `promocje_orders` WHERE';
+
+
+        $sqlConditions = '';
+        if (isset($_POST['dateFrom'])) {
+            $dateFrom = date('Y-m-d H:i:s', (strtotime("01/" . $_POST['dateFrom'])));
+            $sqlConditions .= ' AND `data_aktualizacji` >= "' . $dateFrom . '"';
+        }
+        if (isset($_POST['dateTo'])) {
+            $dateTo = date('Y-m-d H:i:s', (strtotime("01/" . $_POST['dateTo'])));
+            $sqlConditions .= ' AND `data_aktualizacji` <= "' . $dateTo . '"';
+        }
+        if (isset($_POST['statusId']) && count($_POST['statusId'])) {
+            // zeby uodpornic na sql injection trzeba zrobic int z kazdej wartosci tego arraya
+            $sqlConditions .= ' AND `statusId` IN ("' . implode('", "', $_POST['statusId']) . '")';
+        }
+        if (isset($_POST['promotionId']) && count($_POST['promotionId'])) {
+            $sqlConditions .= ' AND `promotionId` IN ("' . implode('", "', $_POST['promotionId']) . '")';
+        }
+        if (isset($_POST['etapId']) && count($_POST['etapId'])) {
+        $sqlConditions .= 'AND `stage_id` IN ("' . implode('", "', $_POST['etapId']) . '")';
+        }
+        $sql = 'SELECT *
+            FROM `promocje_orders`
+            LEFT JOIN `promocje_orders_items` ON (promocje_orders.id = promocje_orders_items.order_id)
+            WHERE
+                1 = 1'
+                 . $sqlConditions . '
+            GROUP BY order_id';
+
+
+
+/*
         $dateFromTo = array();
         if (isset($_POST['dateFrom'])) {
             $dateFromTo["from"] = date('Y-m-d H:i:s', (strtotime("01/" . $_POST['dateFrom'])));
@@ -118,27 +151,13 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
             foreach ($filterDateForOrderMapper as $order) {
                 $orderMapper->filterBy('id', $order->id);
             }
-        }
+        }*/
 
 
         $promocjaMapper = new Model_Promocje_PromocjaMapper;
 
-        $filterEtapyForOrderMapper = $orderMapper->findBySql('SELECT * FROM `promocje_orders` JOIN `promocje_orders_items` ON (promocje_orders.id = promocje_orders_items.order_id) WHERE `stage_id` IN (' . implode(',', $_POST['etapId']) . ') GROUP BY order_id');
+        $orders = $orderMapper->findBySql($sql);
 
-
-        foreach ($filterEtapyForOrderMapper as $order) {
-            $orderMapper->filterBy('id', $order->id);
-        }
-
-        if (isset($_POST['statusId'])) {
-            $orderMapper->filterBy('statusId', $_POST['statusId']);
-        }
-        if (isset($_POST['promotionId'])) {
-            $orderMapper->filterBy('promotionId', $_POST['promotionId']);
-        }
-
-
-        $orders = $orderMapper->find();
 
         $adresMapper = new Model_Mapper_Adres();
         $userMapper = new Model_App_UserMapper;

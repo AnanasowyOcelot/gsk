@@ -26,8 +26,10 @@
       <file leaf-file-name="Controller.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/modules/cms/promocjeorders/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="107" column="0" selection-start="3530" selection-end="3530" vertical-scroll-proportion="1.458159" vertical-offset="1122" max-vertical-offset="5627">
-              <folding />
+            <state line="154" column="0" selection-start="5539" selection-end="5540" vertical-scroll-proportion="0.6506276" vertical-offset="2001" max-vertical-offset="5644">
+              <folding>
+                <element signature="e#4633#5538#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -649,7 +651,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="699" extended-state="6" />
+    <frame x="-8" y="-8" width="1296" height="699" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -657,7 +659,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22690438" sideWeight="0.71639043" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22690438" sideWeight="0.6703499" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296501" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -799,8 +801,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/modules/cms/promocjeorders/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="0" selection-start="3530" selection-end="3530" vertical-scroll-proportion="1.458159" vertical-offset="1122" max-vertical-offset="5627">
-          <folding />
+        <state line="154" column="0" selection-start="5539" selection-end="5540" vertical-scroll-proportion="0.6506276" vertical-offset="2001" max-vertical-offset="5644">
+          <folding>
+            <element signature="e#4633#5538#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
