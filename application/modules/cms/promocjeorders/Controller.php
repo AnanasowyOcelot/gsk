@@ -90,6 +90,7 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
         return $response;
     }
 
+
     /**
      * @param Core_Request $request
      * @return Core_Response
@@ -98,20 +99,55 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
     {
         $response = new Core_Response();
         $response->setModuleTemplate("export");
-
         $orderMapper = new Model_Promocje_OrderMapper();
+
+        $dateFromTo = array();
+        if (isset($_POST['dateFrom'])) {
+            $dateFromTo["from"] = date('Y-m-d H:i:s', (strtotime("01/" . $_POST['dateFrom'])));
+            $filterDateForOrderMapper = $orderMapper->findBySql('SELECT * FROM `promocje_orders` WHERE `data_aktualizacji` >= "' . $dateFromTo["from"] . '"');
+
+            foreach ($filterDateForOrderMapper as $order) {
+                $orderMapper->filterBy('id', $order->id);
+            }
+
+        }
+        if (isset($_POST['dateTo'])) {
+            $dateFromTo["to"] = date('Y-m-d H:i:s', (strtotime("01/" . $_POST['dateTo'])));
+            $filterDateForOrderMapper = $orderMapper->findBySql('SELECT * FROM `promocje_orders` WHERE `data_aktualizacji` <= "' . $dateFromTo["to"] . "");
+
+            foreach ($filterDateForOrderMapper as $order) {
+                $orderMapper->filterBy('id', $order->id);
+            }
+        }
+
+
+        $promocjaMapper = new Model_Promocje_PromocjaMapper;
+
+        $filterEtapyForOrderMapper = $orderMapper->findBySql('SELECT * FROM `promocje_orders` JOIN `promocje_orders_items` ON (promocje_orders.id = promocje_orders_items.order_id) WHERE `stage_id` IN (' . implode(',', $_POST['etapId']) . ') GROUP BY order_id');
+
+
+        foreach ($filterEtapyForOrderMapper as $order) {
+            $orderMapper->filterBy('id', $order->id);
+        }
+
+        if (isset($_POST['statusId'])) {
+            $orderMapper->filterBy('statusId', $_POST['statusId']);
+        }
+        if (isset($_POST['promotionId'])) {
+            $orderMapper->filterBy('promotionId', $_POST['promotionId']);
+        }
+
+
         $orders = $orderMapper->find();
 
         $adresMapper = new Model_Mapper_Adres();
         $userMapper = new Model_App_UserMapper;
-        $promocjaMapper = new Model_Promocje_PromocjaMapper;
 
         $objPHPExcel = new PHPExcel();
 
         $secondRowNum = 5;
 
         // WYSRODKOWANIE TEKSTU
-
         $style = array(
             'alignment' => array(
                 'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
@@ -127,7 +163,6 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
         }
 
         // USTAWIENIE KOLORU
-
         function cellColor($cells, $color, $objPHPExcel)
         {
             $objPHPExcel->getActiveSheet()->getStyle($cells)->getFill()
@@ -136,19 +171,15 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
                 ));
         }
 
-        ;
-
-
         foreach (range('A', 'R') as $i) {
             cellColor($i . $secondRowNum, 'C8C8C8', $objPHPExcel);
-        };
+        }
         foreach (range('A', 'R') as $i) {
             cellColor($i . "4", 'C8C8C8', $objPHPExcel);
-        };
+        }
         cellColor("O3", 'C8C8C8', $objPHPExcel);
 
         // INFO NAD ETYKIETAMI
-
         $objPHPExcel->getActiveSheet()->mergeCells('B1:F1');
         $objPHPExcel->getActiveSheet()->mergeCells('B2:H2');
 
@@ -163,12 +194,11 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
 
         $objPHPExcel->getActiveSheet()->getStyle('B1')->getFont()->setColor($phpColor);
         $objPHPExcel->getActiveSheet()->getStyle('B2')->getFont()->setColor($phpColor);
-        //ETYKIETA KOD
 
+        //ETYKIETA KOD
         $objPHPExcel->getActiveSheet()->SetCellValue('O2', 'KOD PRODUKTU');
 
         // ETYKIETY PIERWSZY RZĄD
-
         $objPHPExcel->setActiveSheetIndex(0);
 
         $objPHPExcel->getActiveSheet()->mergeCells('A4:D4');
@@ -177,9 +207,7 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
         $objPHPExcel->getActiveSheet()->mergeCells('E4:N4');
         $objPHPExcel->getActiveSheet()->SetCellValue('E4', 'INFORMACJE O DOSTAWIE');
 
-
         // ETYKIETY DRUGI RZĄD
-
         $titleRow = array(
             array('A', 'L.P.'),
             array('B', 'PH GSK'),
@@ -199,13 +227,10 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
             array('P', 'PAKIET STARTOWY'),
             array('Q', 'POŁOWA AKCJI'),
             array('R', 'KONIEC AKCJI'),
-
-
         );
         foreach ($titleRow as $title) {
             $objPHPExcel->getActiveSheet()->SetCellValue($title[0] . $secondRowNum, $title[1]);
         }
-
 
         $rowCount = 6;
         $numRow = 1;
@@ -251,12 +276,50 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
         $promocja = $promocjaMapper->findOneById($orders[0]->promotionId);
         $objPHPExcel->getActiveSheet()->SetCellValue('O3', $promocja->kod_icoguar);
 
-
         $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
-        $objWriter->save('../../tmp/promocje.xlsx');
+        $objWriter->save('../../www/cms/tmp/promocje.xlsx');
 
-        // $response->dodajParametr("orderNames", $orderNames[78]);
+        $response->dodajParametr('downloadLink', Core_Config::get('full_cms_path') . '/tmp/promocje.xlsx');
 
         return $response;
     }
+
+    public function exportFormAction(Core_Request $request)
+    {
+
+        $response = new Core_Response();
+        $response->setModuleTemplate("exportForm");
+
+        $promocjaMapper = new Model_Promocje_PromocjaMapper();
+        $promocje = $promocjaMapper->find();
+        $promocjeArr = array();
+        foreach ($promocje as $promocja) {
+            $promocjeArr[$promocja->id] = $promocja->nazwa;
+        }
+
+
+        $orderStatusMapper = new Model_Promocje_OrderStatusMapper();
+        $statusy = $orderStatusMapper->getAll();
+        $statusyArr = array();
+        foreach ($statusy as $status) {
+            $statusyArr[$status->id] = $status->nazwa;
+        }
+
+        $etapMapper = new Model_Promocje_EtapMapper();
+        $etapy = $etapMapper->find();
+        $etapyArr = array();
+        foreach ($etapy as $etap) {
+            $etapyArr[$etap->id] = $etap->nazwa;
+        }
+
+        $response->dodajParametr("promocje", $promocjeArr);
+        $response->dodajParametr("statusy", $statusyArr);
+        $response->dodajParametr("etapy", $etapyArr);
+        $response->dodajParametr("link", Core_Config::get('cms_dir') . '/' . $this->modul . '/');
+
+
+        return $response;
+
+    }
+
 }

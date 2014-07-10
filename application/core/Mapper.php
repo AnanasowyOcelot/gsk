@@ -2,15 +2,15 @@
 
 abstract class Core_Mapper
 {
-    const T_INT              = 'int';
-    const T_FLOAT            = 'float';
-    const T_VARCHAR          = 'varchar';
-    const T_DATE             = 'date';
-    const T_DATETIME         = 'datetime';
+    const T_INT = 'int';
+    const T_FLOAT = 'float';
+    const T_VARCHAR = 'varchar';
+    const T_DATE = 'date';
+    const T_DATETIME = 'datetime';
     const T_DATETIME_CREATED = 'datetime_created';
     const T_DATETIME_UPDATED = 'datetime_updated';
-    const T_TEXT             = 'text';
-    const T_TEXT_COMPRESSED  = 'text_compressed';
+    const T_TEXT = 'text';
+    const T_TEXT_COMPRESSED = 'text_compressed';
 
     private $filterFields = array(); // elementy tablicy: 'nazwaPola' => 'wartosc'
     private $filterMethods = array(); // elementy tablicy: 'nazwaPola' => 'metoda przyrownania'
@@ -62,8 +62,8 @@ abstract class Core_Mapper
      */
     private function getPrimaryKeysNazwyWBazie()
     {
-        $pola              = $this->getDescription();
-        $primaryKeys       = $this->getPrimaryKeys();
+        $pola = $this->getDescription();
+        $primaryKeys = $this->getPrimaryKeys();
         $primaryKeysWBazie = array();
         foreach ($primaryKeys as $primaryKey) {
             $primaryKeysWBazie[] = $pola[$primaryKey][0];
@@ -98,7 +98,7 @@ abstract class Core_Mapper
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     public function getNew()
     {
-        $class  = $this->getDataObjectClass();
+        $class = $this->getDataObjectClass();
         $object = new $class();
         return $object;
     }
@@ -112,14 +112,14 @@ abstract class Core_Mapper
     public function fromArray(array $r, $object = null)
     {
         if ($object == null) {
-            $class  = $this->getDataObjectClass();
+            $class = $this->getDataObjectClass();
             $object = new $class();
         }
 
         $pola = $this->getDescription();
 
         foreach ($pola as $nazwaWObiekcie => $pole) {
-            if(isset($r[$nazwaWObiekcie])) {
+            if (isset($r[$nazwaWObiekcie])) {
                 $object->$nazwaWObiekcie = $r[$nazwaWObiekcie];
             }
         }
@@ -130,14 +130,14 @@ abstract class Core_Mapper
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     protected function buildObject(array $tableRow)
     {
-        $class  = $this->getDataObjectClass();
+        $class = $this->getDataObjectClass();
         $object = new $class();
 
         $pola = $this->getDescription();
 
         foreach ($pola as $nazwaWObiekcie => $pole) {
             $nazwaWBazie = $pole[0];
-            $typ         = $pole[1];
+            $typ = $pole[1];
             if (isset($tableRow[$nazwaWBazie])) {
                 switch ($typ) {
                     case self::T_TEXT_COMPRESSED:
@@ -166,7 +166,7 @@ abstract class Core_Mapper
         $pola = $this->getDescription();
 
         $polaPrimaryKey = $this->getPrimaryKeys();
-        $a_selectWhere  = array();
+        $a_selectWhere = array();
         foreach ($polaPrimaryKey as $poleNazwa) {
             $poleNazwaWBazie = $pola[$poleNazwa][0];
             if (is_array($id)) {
@@ -181,13 +181,30 @@ abstract class Core_Mapper
         	FROM `' . self::escape($this->getTable()) . '`
         	WHERE ' . implode(' AND ', $a_selectWhere) . '
         	LIMIT 1';
-        $result    = $db->get_row($sqlSelect);
+        $result = $db->get_row($sqlSelect);
         if (count($result) > 0) {
             $object = $this->buildObject($result);
             return $object;
         } else {
             return null;
         }
+    }
+
+    //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    /**
+     * @param string $sqlSelect
+     * @return array
+     */
+    public function findBySql($sqlSelect)
+    {
+        $db = Core_DB::instancja();
+
+        $result = $db->query($sqlSelect);
+        $rekordy = array();
+        foreach ($result as $row) {
+            $rekordy[] = $this->buildObject($row);
+        }
+        return $rekordy;
     }
 
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -216,19 +233,19 @@ abstract class Core_Mapper
         $pola = $this->getDescription();
 
         $a_pobieranePola = array();
-        $a_where         = array();
+        $a_where = array();
         foreach ($polaId as $poleId) {
-            $poleIdNazwaWBazie  = $pola[$poleId][0];
+            $poleIdNazwaWBazie = $pola[$poleId][0];
             $poleSzukanaWartosc = $szukaneId[$poleId];
-            $a_pobieranePola[]  = '`' . self::escape($poleIdNazwaWBazie) . '`';
-            $a_where[]          = '`' . self::escape($poleIdNazwaWBazie) . '` = "' . (int)$poleSzukanaWartosc . '"';
+            $a_pobieranePola[] = '`' . self::escape($poleIdNazwaWBazie) . '`';
+            $a_where[] = '`' . self::escape($poleIdNazwaWBazie) . '` = "' . (int)$poleSzukanaWartosc . '"';
         }
 
         $sqlSelect = 'SELECT ' . implode(', ', $a_pobieranePola) . '
         	FROM `' . self::escape($this->getTable()) . '`
         	WHERE ' . implode(' AND ', $a_where) . '
         	LIMIT 1';
-        $result    = $db->get_row($sqlSelect);
+        $result = $db->get_row($sqlSelect);
 
         if (count($result) > 0) {
             return true;
@@ -279,7 +296,7 @@ abstract class Core_Mapper
         }
 
         $sqlCount = 'SELECT COUNT(*) AS record_count';
-        $sqlTmp   = ' FROM `' . self::escape($this->getTable()) . '` WHERE 1 = 1';
+        $sqlTmp = ' FROM `' . self::escape($this->getTable()) . '` WHERE 1 = 1';
 
         if (is_array($this->filterFields)) {
             foreach ($this->filterFields as $nazwaPola => $wartosc) {
@@ -287,34 +304,58 @@ abstract class Core_Mapper
 
                 $pole = $a_pola[$nazwaPola];
                 if (is_array($pole)) {
-                    $nazwaWBazie = $pole[0];
-                    $typ         = $pole[1];
+                    $nazwaWBazie = self::escape($pole[0]);
+                    $typ = $pole[1];
 
                     switch ($typ) {
                         case self::T_INT:
-                            $sqlTmp .= ' AND `' . self::escape($nazwaWBazie) . '` ' . $metodaPorownania . ' "' . (int)$wartosc . '"';
+                            if (is_array($wartosc)) {
+                                $vals = array();
+                                foreach ($wartosc as $val) {
+                                    $vals[] = '"' . (int)$val . '"';
+                                }
+                                $sqlTmp .= ' AND ' . $this->getSqlForArrayVals($nazwaWBazie, $vals, $metodaPorownania);
+                            } else {
+                                $sqlTmp .= ' AND `' . $nazwaWBazie . '` ' . $metodaPorownania . ' "' . (int)$wartosc . '"';
+                            }
                             break;
                         case self::T_FLOAT:
-                            $sqlTmp .= ' AND `' . self::escape($nazwaWBazie) . '` ' . $metodaPorownania . ' "' . $this->toFloat($wartosc) . '"';
+                            if (is_array($wartosc)) {
+                                $vals = array();
+                                foreach ($wartosc as $val) {
+                                    $vals[] = '"' . $this->toFloat($val) . '"';
+                                }
+                                $sqlTmp .= ' AND ' . $this->getSqlForArrayVals($nazwaWBazie, $vals, $metodaPorownania);
+                            } else {
+                                $sqlTmp .= ' AND `' . $nazwaWBazie . '` ' . $metodaPorownania . ' "' . $this->toFloat($wartosc) . '"';
+                            }
                             break;
                         case self::T_VARCHAR:
                         case self::T_TEXT:
-                            $sqlTmp .= ' AND `' . self::escape($nazwaWBazie) . '` = "' . self::escape($wartosc) . '"';
+                            if (is_array($wartosc)) {
+                                $vals = array();
+                                foreach ($wartosc as $val) {
+                                    $vals[] = '"' . self::escape($val) . '"';
+                                }
+                                $sqlTmp .= ' AND ' . $this->getSqlForArrayVals($nazwaWBazie, $vals, $metodaPorownania);
+                            } else {
+                                $sqlTmp .= ' AND `' . $nazwaWBazie . '` ' . $metodaPorownania . ' "' . self::escape($wartosc) . '"';
+                            }
                             break;
                         case self::T_DATE:
                             if ($wartosc === null) {
-                                $sqlTmp .= ' AND `' . self::escape($nazwaWBazie) . '` ' . $metodaPorownania . ' "0000-00-00"';
+                                $sqlTmp .= ' AND `' . $nazwaWBazie . '` ' . $metodaPorownania . ' "0000-00-00"';
                             } else {
-                                $sqlTmp .= ' AND `' . self::escape($nazwaWBazie) . '` ' . $metodaPorownania . ' "' . self::escape($wartosc) . '"';
+                                $sqlTmp .= ' AND `' . $nazwaWBazie . '` ' . $metodaPorownania . ' "' . self::escape($wartosc) . '"';
                             }
                             break;
                         case self::T_DATETIME:
                         case self::T_DATETIME_CREATED:
                         case self::T_DATETIME_UPDATED:
                             if ($wartosc === null) {
-                                $sqlTmp .= ' AND `' . self::escape($nazwaWBazie) . '` ' . $metodaPorownania . ' "0000-00-00 00:00:00"';
+                                $sqlTmp .= ' AND `' . $nazwaWBazie . '` ' . $metodaPorownania . ' "0000-00-00 00:00:00"';
                             } else {
-                                $sqlTmp .= ' AND `' . self::escape($nazwaWBazie) . '` ' . $metodaPorownania . ' "' . self::escape($wartosc) . '"';
+                                $sqlTmp .= ' AND `' . $nazwaWBazie . '` ' . $metodaPorownania . ' "' . self::escape($wartosc) . '"';
                             }
                             break;
                         case self::T_TEXT_COMPRESSED:
@@ -353,7 +394,7 @@ abstract class Core_Mapper
         $this->pageCount = 1;
         if ((int)$this->perPage > 0) {
             $this->recordCount = $db->get_one($sqlCount);
-            $this->pageCount   = ceil($this->recordCount / (int)$this->perPage);
+            $this->pageCount = ceil($this->recordCount / (int)$this->perPage);
         }
 
         $result = $db->query($sqlSelect);
@@ -379,9 +420,19 @@ abstract class Core_Mapper
     }
 
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    private function getSqlForArrayVals($nazwaWBazie, $vals, $metodaPorownania)
+    {
+        if ($metodaPorownania == 'IN' || $metodaPorownania == '=') {
+            return '`' . $nazwaWBazie . '` IN (' . implode(', ', $vals) . ')';
+        } else if($metodaPorownania == 'NOT IN' || $metodaPorownania == '!=') {
+            return '`' . $nazwaWBazie . '` NOT IN (' . implode(', ', $vals) . ')';
+        }
+    }
+
+    //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     private function getFilterMethod($nazwaPola)
     {
-        $allowedMethods = array('=', '!=', '<>', '<', '<=', '>', '>=', 'LIKE');
+        $allowedMethods = array('=', '!=', '<>', '<', '<=', '>', '>=', 'LIKE', 'IN', 'NOT IN');
         if (isset($this->filterMethods[$nazwaPola]) && $this->filterMethods[$nazwaPola] != '') {
             $filterMethod = $this->filterMethods[$nazwaPola];
         } else {
@@ -396,7 +447,7 @@ abstract class Core_Mapper
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     public function filterBy($nazwaPola, $wartosc, $metodaPorownania = '')
     {
-        $this->filterFields[$nazwaPola]  = $wartosc;
+        $this->filterFields[$nazwaPola] = $wartosc;
         $this->filterMethods[$nazwaPola] = $metodaPorownania;
     }
 
@@ -450,7 +501,7 @@ abstract class Core_Mapper
 
         $db = Core_DB::instancja();
 
-        $pola        = $this->getDescription();
+        $pola = $this->getDescription();
         $polaIdNazwy = $this->getPrimaryKeys();
 
         $polaId = array();
@@ -466,7 +517,7 @@ abstract class Core_Mapper
 
         foreach ($pola as $nazwaWObiekcie => $pole) {
             $nazwaWBazie = $pole[0];
-            $typ         = $pole[1];
+            $typ = $pole[1];
 
             switch ($typ) {
                 case self::T_INT:
@@ -525,7 +576,7 @@ abstract class Core_Mapper
 
             foreach ($polaId as $poleIdNazwa => $poleIdWartosc) {
                 $poleIdNazwaWBazie = $pola[$poleIdNazwa][0];
-                $poleIdTyp         = $pola[$poleIdNazwa][1];
+                $poleIdTyp = $pola[$poleIdNazwa][1];
                 if ($poleIdTyp == self::T_VARCHAR) {
                     $warunkiSql[] = '`' . self::escape($poleIdNazwaWBazie) . '` = "' . self::escape($poleIdWartosc) . '"';
                 } else {
@@ -544,7 +595,7 @@ abstract class Core_Mapper
                 $rekord
             );
             if (count($polaIdNazwy) == 1) {
-                $poleIdNazwa     = $polaIdNazwy[0];
+                $poleIdNazwa = $polaIdNazwy[0];
                 $o->$poleIdNazwa = $db->last_insert_id($this->getTable());
             }
 
@@ -560,11 +611,11 @@ abstract class Core_Mapper
         $pola = $this->getDescription();
 
         $poleIdNazwa = $this->getPrimaryKey();
-        $poleId      = $pola[$poleIdNazwa];
+        $poleId = $pola[$poleIdNazwa];
         if (is_array($poleId)) {
             $poleIdNazwaWBazie = $poleId[0];
-            $poleIdWartosc     = $o->$poleIdNazwa;
-            $poleIdTyp         = $poleId[1];
+            $poleIdWartosc = $o->$poleIdNazwa;
+            $poleIdTyp = $poleId[1];
 
             if ($poleIdTyp == self::T_VARCHAR) {
                 $db->query('DELETE FROM `' . self::escape($this->getTable()) . '` WHERE `' . self::escape($poleIdNazwaWBazie) . '` = "' . self::escape($poleIdWartosc) . '"');
