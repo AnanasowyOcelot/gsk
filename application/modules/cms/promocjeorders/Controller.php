@@ -120,7 +120,7 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
 
         $objPHPExcel->getDefaultStyle()->applyFromArray($style);
 
-        for($col = 'A'; $col !== 'S'; $col++) {
+        for ($col = 'A'; $col !== 'S'; $col++) {
             $objPHPExcel->getActiveSheet()
                 ->getColumnDimension($col)
                 ->setAutoSize(true);
@@ -128,19 +128,22 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
 
         // USTAWIENIE KOLORU
 
-        function cellColor($cells,$color, $objPHPExcel){
+        function cellColor($cells, $color, $objPHPExcel)
+        {
             $objPHPExcel->getActiveSheet()->getStyle($cells)->getFill()
                 ->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,
                     'startcolor' => array('rgb' => $color)
                 ));
-        };
+        }
+
+        ;
 
 
-        foreach(range('A','R') as $i) {
-            cellColor($i.$secondRowNum, 'C8C8C8', $objPHPExcel);
+        foreach (range('A', 'R') as $i) {
+            cellColor($i . $secondRowNum, 'C8C8C8', $objPHPExcel);
         };
-        foreach(range('A','R') as $i) {
-            cellColor($i."4", 'C8C8C8', $objPHPExcel);
+        foreach (range('A', 'R') as $i) {
+            cellColor($i . "4", 'C8C8C8', $objPHPExcel);
         };
         cellColor("O3", 'C8C8C8', $objPHPExcel);
 
@@ -199,11 +202,9 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
 
 
         );
-        foreach($titleRow as $title) {
+        foreach ($titleRow as $title) {
             $objPHPExcel->getActiveSheet()->SetCellValue($title[0] . $secondRowNum, $title[1]);
         }
-
-
 
 
         $rowCount = 6;
@@ -228,17 +229,17 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
             $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $adres->osobaOdpowiedzialna);
             $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $adres->telefon);
 
-            foreach($order->items as $item){
-                if($item['stageId']==1){
+            foreach ($order->items as $item) {
+                if ($item['stageId'] == 1) {
                     $objPHPExcel->getActiveSheet()->SetCellValue('O' . $rowCount, $item['amount']);
                 }
-                if($item['stageId']==2){
+                if ($item['stageId'] == 2) {
                     $objPHPExcel->getActiveSheet()->SetCellValue('P' . $rowCount, $item['amount']);
                 }
-                if($item['stageId']==3){
+                if ($item['stageId'] == 3) {
                     $objPHPExcel->getActiveSheet()->SetCellValue('Q' . $rowCount, $item['amount']);
                 }
-                if($item['stageId']==4){
+                if ($item['stageId'] == 4) {
                     $objPHPExcel->getActiveSheet()->SetCellValue('R' . $rowCount, $item['amount']);
                 }
             }
@@ -251,7 +252,6 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
         $objPHPExcel->getActiveSheet()->SetCellValue('O3', $promocja->kod_icoguar);
 
 
-
         $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
         $objWriter->save('../../tmp/promocje.xlsx');
 
@@ -260,4 +260,3 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
         return $response;
     }
 }
-$secondRowNum = 5;
