@@ -23,13 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Controller.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Controller.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/modules/cms/promocjeorders/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="154" column="0" selection-start="5539" selection-end="5540" vertical-scroll-proportion="0.6506276" vertical-offset="2001" max-vertical-offset="5644">
-              <folding>
-                <element signature="e#4633#5538#0" expanded="false" />
-              </folding>
+            <state line="106" column="28" selection-start="3291" selection-end="3291" vertical-scroll-proportion="-20.73077" vertical-offset="1263" max-vertical-offset="5644">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -37,35 +35,26 @@
       <file leaf-file-name="OrderMapper.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/model/promocje/OrderMapper.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="29" selection-start="1302" selection-end="1318" vertical-scroll-proportion="-17.653847" vertical-offset="51" max-vertical-offset="2533">
+            <state line="11" column="36" selection-start="338" selection-end="338" vertical-scroll-proportion="-5.230769" vertical-offset="51" max-vertical-offset="2533">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exportForm.tpl" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/modules/cms/promocjeorders/views/exportForm.tpl">
+      <file leaf-file-name="form.tpl" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/modules/cms/procedurypromocyjnepliki/views/form.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="44" selection-start="1662" selection-end="1662" vertical-scroll-proportion="0.0" vertical-offset="580" max-vertical-offset="1207">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Controller.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/modules/cms/promocje/Controller.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="24" selection-start="458" selection-end="461" vertical-scroll-proportion="0.0" vertical-offset="100" max-vertical-offset="1173">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="form.tpl" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/modules/cms/promocje/views/form.tpl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="60" selection-start="3232" selection-end="3232" vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="2584">
-              <folding />
+            <state line="84" column="26" selection-start="2660" selection-end="2660" vertical-scroll-proportion="0.42677826" vertical-offset="1224" max-vertical-offset="2516">
+              <folding>
+                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#2;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#1;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,13 +78,13 @@
         <option value="$PROJECT_DIR$/application/modules/cms/procedurypromocyjneimport/views/zaimportowany.tpl" />
         <option value="$PROJECT_DIR$/application/modules/cms/procedurypromocyjnepliki/views/lista.tpl" />
         <option value="$PROJECT_DIR$/application/modules/cms/procedurypromocyjnepliki/Controller.php" />
-        <option value="$PROJECT_DIR$/application/modules/cms/procedurypromocyjnepliki/views/form.tpl" />
         <option value="$PROJECT_DIR$/application/model/promocje/OrderStatusMapper.php" />
         <option value="$PROJECT_DIR$/application/model/promocje/PromocjaEtapMapper.php" />
         <option value="$PROJECT_DIR$/application/model/promocje/PromocjaEtapEntity.php" />
         <option value="$PROJECT_DIR$/application/core/Mapper.php" />
-        <option value="$PROJECT_DIR$/application/modules/cms/promocjeorders/views/exportForm.tpl" />
         <option value="$PROJECT_DIR$/application/modules/cms/promocjeorders/Controller.php" />
+        <option value="$PROJECT_DIR$/application/modules/cms/promocjeorders/views/exportForm.tpl" />
+        <option value="$PROJECT_DIR$/application/modules/cms/procedurypromocyjnepliki/views/form.tpl" />
       </list>
     </option>
   </component>
@@ -148,6 +137,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -177,6 +167,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tmp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gsk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gsk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gsk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gsk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -600,7 +630,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -609,8 +638,8 @@
     <property name="options.lastSelected" value="Errors" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -659,7 +688,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22690438" sideWeight="0.6703499" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23095624" sideWeight="0.6703499" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296501" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -689,9 +718,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21555915" sideWeight="0.6703499" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -708,11 +737,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/modules/cms/produktimport/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="16" selection-start="871" selection-end="871" vertical-scroll-proportion="-0.03869654" vertical-offset="478" max-vertical-offset="969" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/model/promocje/OrderStatus.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="517" />
@@ -721,11 +745,6 @@
     <entry file="file://$PROJECT_DIR$/application/modules/cms/asortymentsieciprodukt/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="496" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/cms/procedurypromocyjnepliki/views/form.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="0" selection-start="2713" selection-end="2713" vertical-scroll-proportion="0.56236327" vertical-offset="1001" max-vertical-offset="2023" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/model/promocje/OrderStatusMapper.php">
@@ -747,9 +766,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/model/promocje/PromocjaMapper.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="6" selection-start="13" selection-end="13" vertical-scroll-proportion="-1.0733198" vertical-offset="561" max-vertical-offset="1700">
-          <folding />
-        </state>
+        <state line="2" column="6" selection-start="13" selection-end="13" vertical-scroll-proportion="-1.0733198" vertical-offset="561" max-vertical-offset="1700" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/modules/cms/asortymentsieciprodukt/views/form.tpl">
@@ -764,27 +781,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/cms/promocje/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="24" selection-start="458" selection-end="461" vertical-scroll-proportion="0.0" vertical-offset="100" max-vertical-offset="1173">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/cms/promocje/views/form.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="60" selection-start="3232" selection-end="3232" vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="2584">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/cms/promocjeorders/views/exportForm.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="44" selection-start="1662" selection-end="1662" vertical-scroll-proportion="0.0" vertical-offset="580" max-vertical-offset="1207">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/core/Mapper.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="204" column="50" selection-start="6217" selection-end="6217" vertical-scroll-proportion="0.24895397" vertical-offset="3349" max-vertical-offset="11033">
@@ -792,18 +788,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/model/promocje/OrderMapper.php">
+    <entry file="file://$PROJECT_DIR$/application/modules/cms/promocje/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="29" selection-start="1302" selection-end="1318" vertical-scroll-proportion="-17.653847" vertical-offset="51" max-vertical-offset="2533">
-          <folding />
-        </state>
+        <state line="15" column="24" selection-start="458" selection-end="461" vertical-scroll-proportion="0.3156823" vertical-offset="100" max-vertical-offset="1173" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/modules/cms/promocjeorders/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="0" selection-start="5539" selection-end="5540" vertical-scroll-proportion="0.6506276" vertical-offset="2001" max-vertical-offset="5644">
+        <state line="106" column="28" selection-start="3291" selection-end="3291" vertical-scroll-proportion="-20.73077" vertical-offset="1263" max-vertical-offset="5644">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/cms/mainLayout.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3961">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/cms/promocje/views/form.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="60" selection-start="3232" selection-end="3232" vertical-scroll-proportion="1.6715481" vertical-offset="663" max-vertical-offset="2584">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/cms/promocjeorders/views/exportForm.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="0" selection-start="969" selection-end="969" vertical-scroll-proportion="0.9958159" vertical-offset="0" max-vertical-offset="1207">
           <folding>
-            <element signature="e#4633#5538#0" expanded="false" />
+            <element signature="n#style#0;n#input#0;n#label#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#label#1;n#div#0;n#div#0;n#form#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/model/promocje/OrderMapper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="36" selection-start="338" selection-end="338" vertical-scroll-proportion="-5.230769" vertical-offset="51" max-vertical-offset="2533">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/cms/procedurypromocyjnepliki/views/form.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="26" selection-start="2660" selection-end="2660" vertical-scroll-proportion="0.42677826" vertical-offset="1224" max-vertical-offset="2516">
+          <folding>
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#2;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#1;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

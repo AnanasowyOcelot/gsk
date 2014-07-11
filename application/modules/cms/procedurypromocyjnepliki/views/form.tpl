@@ -1,3 +1,31 @@
+<style>
+    table, th, tr, td{
+        background-color: #F9F9F9;
+        border-bottom: 1px solid #A4A4A4;
+        font-size: 12px;
+        border-collapse: separate;
+        border-spacing:0;
+    }
+    table{
+        border: 1px solid #A4A4A4;
+    }
+    td, th{
+        padding: 4px;
+    }
+    th{
+        background-color: #E6E6E6;
+    }
+    tr td:nth-child(even) {
+        background-color: #F2F2F2;
+    }
+    #klient{
+        background-color: #FFFFFF;
+        border-bottom: 1px solid #A4A4A4;
+        /*border-top: 2px solid #A4A4A4;*/
+
+    }
+</style>
+
 <div class="listaHeader listaHeaderFormularz">
     <table>
         <tr>
@@ -57,9 +85,10 @@
     <!-- FORMULARZ ------>
 <div style="clear: both;">
     {foreach from=$klienciPromocjeLista key=nazwa item=klient}
-    <table style="border: solid #000000 1px; position: relative; width: 790px">
+    </br>
+        <table style="position: relative; width: 790px">
         <tr>
-            <th colspan="10">Klient: {$nazwa}</th>
+            <th colspan="10" id="klient">Klient: {$nazwa}</th>
         </tr>
         <tr>
             <th>Subbrand</th>
