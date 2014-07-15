@@ -13,27 +13,6 @@ class procedurypromocyjneimport_Controller extends Core_ModuleController
         $o_indexResponse = new Core_Response();
         $o_indexResponse->setModuleTemplate("index");
 
-        /*$asortymentSieci = array();
-        $mapperKlient = new Model_AsortymentSieci_KlientMapper();
-        $mapperAsortymentProdukt = new Model_AsortymentSieci_ProduktMapper();
-        $klienci = $mapperKlient->find();
-        foreach ($klienci as $klient) {
-            $values = $mapperKlient->getValues($klient->id);
-            $produkty = array();
-            foreach ($values as $value) {
-                $asortymentProdukt = $mapperAsortymentProdukt->findOneById($value['produkt_id']);
-                $produkt = new Model_Produkt($asortymentProdukt->produktId);
-                $asortymentProdukt->imageSmall = 'z1/1/' . $produkt->zdjecie_1;
-                $produkty[] = $asortymentProdukt;
-            }
-
-            $asortymentSieci[] = array(
-                'klientNazwa' => $klient->nazwa,
-                'produkty' => $produkty
-            );
-        }
-        $debug = Core_Narzedzia::drukuj($asortymentSieci, 1);
-        $o_indexResponse->dodajParametr('debug', $debug);*/
 
         $o_indexResponse->dodajParametr('link', Core_Config::get('cms_dir') . '/' . $this->modul . '/');
         $o_indexResponse->dodajParametr('uprawnienia', $o_requestIn->getUprawnieniaModul($this->modul));
@@ -47,6 +26,7 @@ class procedurypromocyjneimport_Controller extends Core_ModuleController
         $o_indexResponse->setModuleTemplate("zaimportowany");
 
 
+
         $pliki    = $o_requestIn->getPliki();
         $fileData = $pliki['plikXls'];
         if ($fileData['tmp_name'] != "") {
@@ -54,6 +34,7 @@ class procedurypromocyjneimport_Controller extends Core_ModuleController
 
             $importer = new Model_ProceduryPromocyjne_ImportExcelForProceduryPromocyjne($path);
             $importer->setDocumentName($fileData['name']);
+            $importer->import();
         } else {
             $komunikaty[] = array('error', 'Nie wybrano pliku.');
         }
