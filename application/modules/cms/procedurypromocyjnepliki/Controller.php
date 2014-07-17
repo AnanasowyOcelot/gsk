@@ -14,21 +14,29 @@ class procedurypromocyjnepliki_Controller extends Core_CMS_Module_Controller
     protected function obslugaFormularza(Core_Request $request)
     {
         $response = parent::obslugaFormularza($request);
-
-        $klientMapper = new Model_ProceduryPromocyjne_KlientMapper();
-
         $rekord2 = $this->getRecord($request);
 
-
+        $klientMapper = new Model_ProceduryPromocyjne_KlientMapper();
         $klientMapper->filterBy('dokument_id', $rekord2->id);
+
+        $table = $this->createPromocjeTable($klientMapper);
+
+        $response->dodajParametr('klienciPromocjeLista', $table);
+
+        return $response;
+    }
+
+    public static function createPromocjeTable(Model_ProceduryPromocyjne_KlientMapper $klientMapper, $produktId = null){
         $klients = $klientMapper->find();
-
-
 
         $table = array();
         foreach ($klients as $klient) {
-            //$table[] = $klient->nazwa;
             $promocjaMapper = new Model_ProceduryPromocyjne_PromocjaMapper();
+
+            if($produktId != null){
+                $promocjaMapper->filterBy('produkt_id', $produktId);
+            }
+
             $promocjaMapper->filterBy('klient_id', $klient->id);
             $promocje = $promocjaMapper->find();
             foreach($promocje as $promocja){
@@ -43,17 +51,13 @@ class procedurypromocyjnepliki_Controller extends Core_CMS_Module_Controller
                 $promocjaArr['dodatkowa_lokalizacja'] = $promocja->dodatkowa_lokalizacja;
                 $promocjaArr['ilosc_dodatkowych_lokalizacji'] = $promocja->ilosc_dodatkowych_lokalizacji;
                 $promocjaArr['uwagi'] = $promocja->uwagi;
+                $promocjaArr['EAN'] = $promocja->EAN;
+
 
                 $table[$klient->nazwa][] = $promocjaArr;
             }
 
         }
-        Core_Narzedzia::drukuj($table);
-//        exit();
-
-
-        $response->dodajParametr('klienciPromocjeLista', $table);
-
-        return $response;
+        return $table;
     }
 }

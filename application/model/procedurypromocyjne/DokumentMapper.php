@@ -25,4 +25,12 @@ class Model_ProceduryPromocyjne_DokumentMapper extends Core_Mapper
 
         );
     }
+
+    public function findNewestFileId()
+    {
+        $this->filterOrderBy('dataAktualizacji', 'DESC');
+        $this->filterLimit(1);
+        $ids = $this->findIds();
+        return $ids[0];
+    }
 }

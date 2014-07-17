@@ -19,6 +19,7 @@ class Model_ProceduryPromocyjne_PromocjaMapper extends Core_Mapper
     {
         return array(
             'id' => array('id', Core_Mapper::T_INT),
+            'produkt_id' => array('produkt_id', Core_Mapper::T_INT),
             'klient_id' => array('klient_id', Core_Mapper::T_INT),
             'subbrand' => array('subbrand', Core_Mapper::T_VARCHAR),
             'produkt' => array('produkt', Core_Mapper::T_VARCHAR),
@@ -30,8 +31,7 @@ class Model_ProceduryPromocyjne_PromocjaMapper extends Core_Mapper
             'dodatkowa_lokalizacja' => array('dodatkowa_lokalizacja', Core_Mapper::T_VARCHAR),
             'ilosc_dodatkowych_lokalizacji' => array('ilosc_dodatkowych_lokalizacji', Core_Mapper::T_INT),
             'uwagi' => array('Uwagi', Core_Mapper::T_VARCHAR),
-
-
+            'EAN' => array('EAN', Core_Mapper::T_VARCHAR),
 
         );
     }

@@ -3,6 +3,7 @@
 class Model_ProceduryPromocyjne_PromocjaEntity
 {
     public $id = 0;
+    public $produkt_id = null;
     public $klient_id = 0;
     public $subbrand = '';
     public $produkt = '';
@@ -14,6 +15,9 @@ class Model_ProceduryPromocyjne_PromocjaEntity
     public $dodatkowa_lokalizacja = '';
     public $ilosc_dodatkowych_lokalizacji = 0;
     public $uwagi = '';
+    public $EAN = '';
+
+
 
 
 //    public $type = 0;

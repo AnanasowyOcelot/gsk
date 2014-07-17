@@ -240,7 +240,17 @@ class produkt_Controller extends Core_ModuleController
     //============================================================================
     function edytujAction(Core_Request $o_requestIn)
     {
+
+        $dokumentMapper = new Model_ProceduryPromocyjne_DokumentMapper();
+        $dokumentId = $dokumentMapper->findNewestFileId();
+
+        $klientMapper = new Model_ProceduryPromocyjne_KlientMapper();
+        $klientMapper->filterBy('dokument_id', $dokumentId);
+
+        $table = procedurypromocyjnepliki_Controller::createPromocjeTable($klientMapper, $o_requestIn->getParametr('id'));
+
         $o_indexResponse = $this->obslugaFormularza($o_requestIn);
+        $o_indexResponse->dodajParametr('klienciPromocjeLista', $table);
         $o_indexResponse->dodajParametr('button_del', "1");
         $o_indexResponse->dodajParametr('form_nazwa', "edycja");
         return $o_indexResponse;

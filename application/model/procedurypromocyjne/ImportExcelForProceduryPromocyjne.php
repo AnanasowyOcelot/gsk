@@ -32,7 +32,7 @@ class Model_ProceduryPromocyjne_ImportExcelForProceduryPromocyjne
         // ZAPISYWANIE DOKUMENTU
         $dokumnetMapper->save($dokumet);
 
-        try{
+        try {
             $i = 1;
             if ($i < $this->PHPExcel->getSheetCount()) {
                 while ($this->PHPExcel->setActiveSheetIndex($i)) {
@@ -101,6 +101,12 @@ class Model_ProceduryPromocyjne_ImportExcelForProceduryPromocyjne
                         $promocjaEntity->dodatkowa_lokalizacja = $table[$row][$colNumbers['Dodatkowa lokalizacja (rodzaj) lista']];
                         $promocjaEntity->ilosc_dodatkowych_lokalizacji = $table[$row][$colNumbers['Ilość dodatkowych lokalizacji']];
                         $promocjaEntity->uwagi = $table[$row][$colNumbers['Uwagi']];
+                        $promocjaEntity->EAN = $table[$row][$colNumbers['EAN']];
+
+                        $produktId = Model_Produkt::findOneByEan($promocjaEntity->EAN)->id;
+                        if ((int)$produktId > 0) {
+                            $promocjaEntity->produkt_id = $produktId;
+                        }
 
                         $promocjaMapper->save($promocjaEntity);
                     }
@@ -110,11 +116,9 @@ class Model_ProceduryPromocyjne_ImportExcelForProceduryPromocyjne
 
                 }
             }
-        }catch (Exception $e){
+        } catch (Exception $e) {
             // nic
         }
-
-
 
 
         return $table;

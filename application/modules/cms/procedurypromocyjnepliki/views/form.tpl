@@ -88,7 +88,7 @@
     </br>
         <table style="position: relative; width: 790px">
         <tr>
-            <th colspan="10" id="klient">Klient: {$nazwa}</th>
+            <th colspan="11" id="klient">Klient: {$nazwa}</th>
         </tr>
         <tr>
             <th>Subbrand</th>
@@ -101,6 +101,7 @@
             <th>Dodatkowa Lokalizacja</th>
             <th>Ilosc dodatkowych lokalizacji</th>
             <th>Uwagi</th>
+            <th>EAN</th>
 
         </tr>
     {foreach from=$klient item=promocja}
@@ -115,6 +116,8 @@
                 <td>{$promocja.dodatkowa_lokalizacja}</td>
                 <td>{$promocja.ilosc_dodatkowych_lokalizacji}</td>
                 <td>{$promocja.uwagi}</td>
+                <td>{$promocja.EAN}</td>
+
 
             </tr>
         {/foreach}
