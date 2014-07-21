@@ -32,7 +32,7 @@ class procedurypromocyjneimport_Controller extends Core_ModuleController
         if ($fileData['tmp_name'] != "") {
             $path = $fileData['tmp_name'];
 
-            $importer = new Model_ProceduryPromocyjne_ImportExcelForProceduryPromocyjne($path);
+            $importer = new Model_ProceduryPromocyjne_ImportExcel($path);
             $importer->setDocumentName($fileData['name']);
             $importer->import();
         } else {

@@ -2,8 +2,42 @@
 body {
     padding-top: 20px;
     padding-bottom: 20px;
+    background: #018fa3 url("../img/background.jpg");
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: -120px;
 }
 
+.roundedcorners {
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+}
+
+/*
+div.logo{
+	background-image: url("../img/logo.png");
+	position: relative;
+	width: 518px;
+	background-size: 67%;
+	height: 200px;
+	top: 67px;
+	left: 168px;
+}
+*/
+div.kontakt{
+    display: none;
+    background-color: #ffffff;
+    padding: 24px;
+}
+div.instrukcja{
+    display: none;
+    background-color: #ffffff;
+    padding: 24px;
+}
+div.przyciski{
+    margin-top: 300px;
+}
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -130,4 +164,14 @@ ul {
 li {
     margin: 0;
     padding: 0;
+}
+.przyciski a{
+    width: 324px;
+    margin: 28px auto;
+    display: block;
+}
+@media screen and (max-width: 370px) {
+    .przyciski a{
+        width: 98%;
+    }
 }

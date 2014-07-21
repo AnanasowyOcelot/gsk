@@ -51,10 +51,10 @@ class Model_Api_AppDataGeneratorV2dot28
                 $addressIds = array();
                 if (isset($postData['promotions']['addresses'])) {
                     $addressesData = $postData['promotions']['addresses'];
-                    $addressMapper = new Model_Mapper_Adres();
+                    $addressMapper = new Model_Promocje_AdresMapper();
                     foreach ($addressesData as $addressData) {
                         if (isset($addressData['remoteId']) && (int)$addressData['remoteId'] == 0) {
-                            $address = new Model_DataObject_Adres();
+                            $address = new Model_Promocje_AdresEntity();
                             $address = $addressMapper->fromArray($addressData, $address);
                             $address->id = 0;
                             $address->aktywny = 1;
@@ -193,7 +193,6 @@ class Model_Api_AppDataGeneratorV2dot28
     }
 
     private static function getAsortymentSieciJson() {
-        //$filePath = Core_Config::get('server_path') . 'tmp/asortyment.json';
         $json = static::encodeJson(self::getAsortymentSieci());
         return $json;
     }
@@ -328,7 +327,7 @@ class Model_Api_AppDataGeneratorV2dot28
             );
         }
 
-        $mapper = new Model_Mapper_Adres();
+        $mapper = new Model_Promocje_AdresMapper();
         $res['addresses'] = $mapper->find();
 
         return $res;

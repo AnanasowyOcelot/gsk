@@ -101,15 +101,13 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
         $response->setModuleTemplate("export");
         $orderMapper = new Model_Promocje_OrderMapper();
 
-        //$sql = 'SELECT * FROM `promocje_orders` WHERE';
-
 
         $sqlConditions = '';
-        if (!empty($_POST['dateFrom'])&& count($_POST['dateFrom'])) {
+        if (!empty($_POST['dateFrom']) && count($_POST['dateFrom'])) {
             $dateFrom = date('Y-m-d H:i:s', (strtotime("01/" . $_POST['dateFrom'])));
             $sqlConditions .= ' AND `data_aktualizacji` >= "' . $dateFrom . '"';
         }
-        if (!empty($_POST['dateTo'])&& count($_POST['dateTo'])) {
+        if (!empty($_POST['dateTo']) && count($_POST['dateTo'])) {
             $dateTo = date('Y-m-d H:i:s', (strtotime("01/" . $_POST['dateTo'])));
             $sqlConditions .= ' AND `data_aktualizacji` <= "' . $dateTo . '"';
         }
@@ -120,162 +118,200 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
             $sqlConditions .= ' AND `promocja_id` IN ("' . implode('", "', $_POST['promotionId']) . '")';
         }
         if (!empty($_POST['etapId']) && count($_POST['etapId'])) {
-        $sqlConditions .= ' AND `stage_id` IN ("' . implode('", "', $_POST['etapId']) . '")';
+            $sqlConditions .= ' AND `stage_id` IN ("' . implode('", "', $_POST['etapId']) . '")';
         }
         $sql = 'SELECT *
             FROM `promocje_orders`
             LEFT JOIN `promocje_orders_items` ON (promocje_orders.id = promocje_orders_items.order_id)
             WHERE
                 1 = 1'
-                 . $sqlConditions . '
+            . $sqlConditions . '
             GROUP BY id';
 
-
-
-
-//        print_r($sql);
-//        exit();
 
         $promocjaMapper = new Model_Promocje_PromocjaMapper;
 
         $orders = $orderMapper->findBySql($sql);
 
 
-        $adresMapper = new Model_Mapper_Adres();
-        $userMapper = new Model_App_UserMapper;
+        $adresMapper = new Model_Promocje_AdresMapper();
+        $userMapper = new Model_App_UserMapper();
 
         $objPHPExcel = new PHPExcel();
 
-        $secondRowNum = 5;
-
-        // WYSRODKOWANIE TEKSTU
-        $style = array(
-            'alignment' => array(
-                'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
-            )
-        );
-
-        $objPHPExcel->getDefaultStyle()->applyFromArray($style);
-
-        for ($col = 'A'; $col !== 'S'; $col++) {
-            $objPHPExcel->getActiveSheet()
-                ->getColumnDimension($col)
-                ->setAutoSize(true);
-        }
-
-        // USTAWIENIE KOLORU
-        function cellColor($cells, $color, $objPHPExcel)
-        {
-            $objPHPExcel->getActiveSheet()->getStyle($cells)->getFill()
-                ->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,
-                    'startcolor' => array('rgb' => $color)
-                ));
-        }
-
-        foreach (range('A', 'R') as $i) {
-            cellColor($i . $secondRowNum, 'C8C8C8', $objPHPExcel);
-        }
-        foreach (range('A', 'R') as $i) {
-            cellColor($i . "4", 'C8C8C8', $objPHPExcel);
-        }
-        cellColor("O3", 'C8C8C8', $objPHPExcel);
-
-        // INFO NAD ETYKIETAMI
-        $objPHPExcel->getActiveSheet()->mergeCells('B1:F1');
-        $objPHPExcel->getActiveSheet()->mergeCells('B2:H2');
-
-        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'UWAGA! Estymując ilości, należy podać ilość pakietów a nie gratisów.');
-        $objPHPExcel->getActiveSheet()->SetCellValue('B2', 'UWAGA! Używając funkcji wklej, należy używać WYŁĄCZNIE FUNKCJI WKLEJ SPECJALNE JAKO TEKST');
-
-        $objPHPExcel->getActiveSheet()->getStyle('B1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-        $objPHPExcel->getActiveSheet()->getStyle('B2')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-
-        $phpColor = new PHPExcel_Style_Color();
-        $phpColor->setRGB('FF0000');
-
-        $objPHPExcel->getActiveSheet()->getStyle('B1')->getFont()->setColor($phpColor);
-        $objPHPExcel->getActiveSheet()->getStyle('B2')->getFont()->setColor($phpColor);
-
-        //ETYKIETA KOD
-        $objPHPExcel->getActiveSheet()->SetCellValue('O2', 'KOD PRODUKTU');
-
-        // ETYKIETY PIERWSZY RZĄD
-        $objPHPExcel->setActiveSheetIndex(0);
-
-        $objPHPExcel->getActiveSheet()->mergeCells('A4:D4');
-        $objPHPExcel->getActiveSheet()->SetCellValue('A4', 'INFORMACJE GSK');
-
-        $objPHPExcel->getActiveSheet()->mergeCells('E4:N4');
-        $objPHPExcel->getActiveSheet()->SetCellValue('E4', 'INFORMACJE O DOSTAWIE');
-
-        // ETYKIETY DRUGI RZĄD
-        $titleRow = array(
-            array('A', 'L.P.'),
-            array('B', 'PH GSK'),
-            array('C', 'REGIONALNY'),
-            array('D', 'DYSTRYBUTOR'),
-            array('E', 'FIRMA'),
-            array('F', 'MIASTO'),
-            array('G', 'KOD POCZTOWY'),
-            array('H', 'ULICA'),
-            array('I', 'NUMER LOKALU'),
-            array('J', 'OSOBA ODPOWIEDZIALNA - IMIĘ, NAZWISKO'),
-            array('K', 'NUMER TELEFONU'),
-            array('L', 'KOD POCZTOWY'),
-            array('M', 'ULICA'),
-            array('N', 'NUMER LOKALU'),
-            array('O', 'ESTYMACJA'),
-            array('P', 'PAKIET STARTOWY'),
-            array('Q', 'POŁOWA AKCJI'),
-            array('R', 'KONIEC AKCJI'),
-        );
-        foreach ($titleRow as $title) {
-            $objPHPExcel->getActiveSheet()->SetCellValue($title[0] . $secondRowNum, $title[1]);
-        }
-
-        $rowCount = 6;
-        $numRow = 1;
+        $promotionIdsArray = array();
         foreach ($orders as $order) {
+            $promotionIdsArray[$order->promotionId] = $order->promotionId;
+        }
 
-            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $numRow);
+        $sheetIndex = 0;
+        $objPHPExcel->removeSheetByIndex(0);
+        foreach ($promotionIdsArray as $promotion) {
 
-            $user = $userMapper->findOneById($order->przedstawicielId);
-            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $user->name);
+            $objPHPExcel->createSheet(NULL, $sheetIndex);
+            $objPHPExcel->setActiveSheetIndex($sheetIndex);
 
-            $userSup = $userMapper->findOneById($user->supervisor_id);
-            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $userSup->name);
-            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $order->dystrybutorId);
+            $sheet = $objPHPExcel->getActiveSheet();
 
-            $adres = $adresMapper->findOneById($order->addressId);
-            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $adres->firma);
-            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $adres->miejscowosc);
-            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $adres->kodPocztowy);
-            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $adres->ulica);
-            $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $adres->nrLokalu);
-            $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $adres->osobaOdpowiedzialna);
-            $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $adres->telefon);
+            $promocja = $promocjaMapper->findOneById($promotion);
+            $sheet->setTitle($promocja->nazwa);
 
-            foreach ($order->items as $item) {
-                if ($item['stageId'] == 1) {
-                    $objPHPExcel->getActiveSheet()->SetCellValue('O' . $rowCount, $item['amount']);
-                }
-                if ($item['stageId'] == 2) {
-                    $objPHPExcel->getActiveSheet()->SetCellValue('P' . $rowCount, $item['amount']);
-                }
-                if ($item['stageId'] == 3) {
-                    $objPHPExcel->getActiveSheet()->SetCellValue('Q' . $rowCount, $item['amount']);
-                }
-                if ($item['stageId'] == 4) {
-                    $objPHPExcel->getActiveSheet()->SetCellValue('R' . $rowCount, $item['amount']);
+            $secondRowNum = 5;
+
+            // WYSRODKOWANIE TEKSTU
+            $style = array(
+                'alignment' => array(
+                    'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+                )
+            );
+
+            $objPHPExcel->getDefaultStyle()->applyFromArray($style);
+
+            for ($col = 'A'; $col !== 'S'; $col++) {
+                $sheet
+                    ->getColumnDimension($col)
+                    ->setAutoSize(true);
+            }
+
+
+
+            $this->cellColor("L3", 'C8C8C8', $sheet);
+
+            // INFO NAD ETYKIETAMI
+            $sheet->mergeCells('B1:F1');
+            $sheet->mergeCells('B2:H2');
+
+            $sheet->SetCellValue('B1', 'UWAGA! Estymując ilości, należy podać ilość pakietów a nie gratisów.');
+            $sheet->SetCellValue('B2', 'UWAGA! Używając funkcji wklej, należy używać WYŁĄCZNIE FUNKCJI WKLEJ SPECJALNE JAKO TEKST');
+
+            $sheet->getStyle('B1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+            $sheet->getStyle('B2')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+
+            $phpColor = new PHPExcel_Style_Color();
+            $phpColor->setRGB('FF0000');
+
+            $sheet->getStyle('B1')->getFont()->setColor($phpColor);
+            $sheet->getStyle('B2')->getFont()->setColor($phpColor);
+
+            //ETYKIETA KOD
+            $sheet->SetCellValue('L2', 'KOD PRODUKTU');
+
+            // ETYKIETY PIERWSZY RZĄD
+            $objPHPExcel->setActiveSheetIndex(0);
+
+            $sheet->mergeCells('A4:D4');
+            $sheet->SetCellValue('A4', 'INFORMACJE GSK');
+
+            $sheet->mergeCells('E4:N4');
+            $sheet->SetCellValue('E4', 'INFORMACJE O DOSTAWIE');
+
+            // ETYKIETY DRUGI RZĄD
+            $titleRow = array(
+                'L.P.',
+                'PH GSK',
+                'REGIONALNY',
+                'DYSTRYBUTOR',
+                'FIRMA',
+                'MIASTO',
+                'KOD POCZTOWY',
+                'ULICA',
+                'NUMER LOKALU',
+                'OSOBA ODPOWIEDZIALNA - IMIĘ, NAZWISKO',
+                'NUMER TELEFONU'
+            );
+
+            $stageMapper = new Model_Promocje_EtapMapper();
+            $stageMapper->filterOrderBy('kolejnosc');
+            $stages = $stageMapper->find();
+
+            $stageIdsArray = array();
+            foreach ($orders as $order) {
+                foreach ($order->items as $item) {
+                    $stageIdsArray[$item['stageId']] = $item['stageId'];
+                };
+            }
+
+            $stageColIndex = chr(ord('A') + count($titleRow));
+            $stageColNums = array();
+            foreach ($stages as $stage) {
+                if (in_array($stage->id, $stageIdsArray)) {
+                    $stageColNums[$stage->id] = $stageColIndex;
+                    $titleRow[] = strtoupper($stage->nazwa);
+                    $stageColIndex++;
                 }
             }
 
-            $rowCount++;
-            $numRow++;
-        }
 
-        $promocja = $promocjaMapper->findOneById($orders[0]->promotionId);
-        $objPHPExcel->getActiveSheet()->SetCellValue('O3', $promocja->kod_icoguar);
+            $colIndex = 'A';
+            foreach ($titleRow as $colTitle) {
+                $sheet->SetCellValue($colIndex . $secondRowNum, $colTitle);
+                $colIndex++;
+            }
+
+            $rowCount = 6;
+            $numRow = 1;
+
+            foreach ($orders as $order) {
+
+                if ($order->promotionId == $promotion) {
+
+                    $user = $userMapper->findOneById($order->przedstawicielId);
+                    $userSup = $userMapper->findOneById($user->supervisor_id);
+                    if (!empty($userSup)) {
+                        $userSupName = $userSup->name;
+                    } else {
+                        $userSupName = '';
+                    }
+
+                    $adres = $adresMapper->findOneById($order->addressId);
+
+
+                    $cellValues = [
+                        $numRow,
+                        $user->name,
+                        $userSupName,
+                        $order->dystrybutorId,
+                        $adres->firma,
+                        $adres->miejscowosc,
+                        $adres->kodPocztowy,
+                        $adres->ulica,
+                        $adres->nrLokalu,
+                        $adres->osobaOdpowiedzialna,
+                        $adres->telefon
+                    ];
+
+                    $colIndex = 'A';
+                    foreach ($cellValues as $cellValue) {
+                        $sheet->SetCellValue($colIndex . $rowCount, $cellValue);
+                        $colIndex++;
+                    }
+
+                    foreach ($order->items as $item) {
+                        Core:
+                        $sheet->SetCellValue(
+                            $stageColNums[$item['stageId']] . $rowCount,
+                            $item['amount']
+                        );
+                    }
+
+                    $rowCount++;
+                    $numRow++;
+                }
+                $lastUsedCol = $sheet->getHighestDataColumn();
+                foreach (range('A', $lastUsedCol) as $i) {
+                    $this->cellColor($i . $secondRowNum, 'C8C8C8', $sheet);
+                }
+                foreach (range('A', $lastUsedCol) as $i) {
+                    $this->cellColor($i . "4", 'C8C8C8', $sheet);
+                }
+            }
+
+
+            $sheet->SetCellValue('L3', $promocja->kod_icoguar);
+
+
+            $sheetIndex++;
+        }
 
         $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
         $objWriter->save('../../www/cms/tmp/promocje.xlsx');
@@ -283,6 +319,15 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
         $response->dodajParametr('downloadLink', Core_Config::get('full_cms_path') . '/tmp/promocje.xlsx');
 
         return $response;
+    }
+
+    // USTAWIENIE KOLORU
+    public function cellColor($cells, $color, $sheet)
+    {
+        $sheet->getStyle($cells)->getFill()
+            ->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,
+                'startcolor' => array('rgb' => $color)
+            ));
     }
 
     public function exportFormAction(Core_Request $request)

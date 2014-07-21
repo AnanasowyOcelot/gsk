@@ -1,4 +1,5 @@
 <style>
+    {literal}
     table, th, tr, td {
         background-color: #F9F9F9;
         border-bottom: 1px solid #A4A4A4;
@@ -32,6 +33,7 @@
         /*border-top: 2px solid #A4A4A4;*/
 
     }
+    {/literal}
 </style>
 <div class="listaHeader listaHeaderFormularz">
     <table>

@@ -178,7 +178,7 @@ class Model_Api_AppDataGeneratorV2dot17
 			);
 		}
 
-		$mapper           = new Model_Mapper_Adres();
+		$mapper           = new Model_Promocje_AdresMapper();
 		$res['addresses'] = $mapper->find();
 
 		return $res;

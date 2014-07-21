@@ -1,15 +1,13 @@
 <?php
 error_reporting(E_ALL);
 
-echo 'aaaaaaa';
-exit();
-
 /********************************************************************************************/
 /****************************** DEFINICJE KLAS ******************************************/
 /********************************************************************************************/
 require_once('../../application/core/Config.php');
 Core_Config::loadIni('../../application/configs/app.ini');
-Core_Config::loadIni('../../application/configs/appPage.ini');
+Core_Config::set('modules_path', Core_Config::get('application_path') . 'modules/page/');
+Core_Config::set('views_path', Core_Config::get('application_path') . 'views/page/');
 
 require_once(Core_Config::get('libs_path') . 'smarty/libs/Smarty.class.php');
 require_once(Core_Config::get('libs_path') . 'adodb5/adodb-exceptions.inc.php');
@@ -60,6 +58,9 @@ if (isset($_GET['v'])) {
 
 $json = '';
 switch ($version) {
+    case '2.29':
+        $json = 'appData = ' . Model_Api_AppDataGeneratorV2dot29::generujJson($_POST);
+        break;
     case '2.28':
         $json = 'appData = ' . Model_Api_AppDataGeneratorV2dot28::generujJson($_POST);
         break;

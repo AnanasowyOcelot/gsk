@@ -407,7 +407,7 @@ class Core_Narzedzia
     {
         $errors = array();
 
-        $a_wymagane = explode(",", $wymagane); //tytul#s,kolejnosc#i,url#s
+        $a_wymagane = explode(",", $wymagane);
 
         $a_validate = array();
         foreach ($a_wymagane as $index => $pole) {
@@ -433,8 +433,6 @@ class Core_Narzedzia
                         if (Core_Narzedzia::validateWartosc($typ_pola, $wartosc)) {
                             $errors[$nazwa_pola] = ' error ';
                         }
-
-
                     }
                 }
             }
@@ -449,16 +447,13 @@ class Core_Narzedzia
         error_reporting(E_ALL);
 
         $mail = new PHPMailer();
-        //$mail->SetLanguage(LANGUAGE, WWW_SERVER_PATH."lib/language/");
         $mail->CharSet = "UTF-8";
-        //$mail->IsMail();
         $mail->IsSMTP();
         $mail->Host = Core_Config::get("SMTP_EMAIL_HOST");
         $mail->SMTPAuth = true;
         $mail->Username = Core_Config::get("SMTP_EMAIL_USER");
         $mail->Password = Core_Config::get("SMTP_EMAIL_PASS");
         $mail->AddReplyTo($from_email, $from_name);
-        //$mail->debug = true;
 
         $mail->From = Core_Config::get("SMTP_EMAIL");
         $mail->FromName = Core_Config::get("SMTP_EMAIL_NAME");
@@ -479,12 +474,9 @@ class Core_Narzedzia
         $mail->Subject = $subject;
         $mail->Body = $message;
         if (!$mail->Send()) {
-            //return $mail->ErrorInfo;
-            //$mail->ClearAddresses();
             return false;
         }
         $mail->ClearAddresses();
-        //return 1;
         return true;
     }
 
