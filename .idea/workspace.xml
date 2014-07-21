@@ -1,73 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f2ba2546-87cb-41b2-8a47-097bf1dfd4b5" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\xampp\htdocs\gsk\application\model\dataobject\Adres.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\gsk\application\model\mapper\Adres.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\gsk\application\model\procedurypromocyjne\ImportExcelForProceduryPromocyjne.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\gsk\www\cms\promocje.xlsx" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot15.php" afterPath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot15.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot16.php" afterPath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot16.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot17.php" afterPath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot17.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot19.php" afterPath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot19.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot20.php" afterPath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot20.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot21.php" afterPath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot21.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot22.php" afterPath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot22.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot23.php" afterPath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot23.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot24.php" afterPath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot24.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot25.php" afterPath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot25.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot26.php" afterPath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot26.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot27.php" afterPath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot27.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot28.php" afterPath="$PROJECT_DIR$/application/model/api/AppDataGeneratorV2dot28.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controller/Cms.php" afterPath="$PROJECT_DIR$/application/controller/Cms.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/core/Config.php" afterPath="$PROJECT_DIR$/application/core/Config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/core/Controller.php" afterPath="$PROJECT_DIR$/application/core/Controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/cms/adres/Controller.php" afterPath="$PROJECT_DIR$/application/modules/cms/adres/Controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/cms/login/Controller.php" afterPath="$PROJECT_DIR$/application/modules/cms/login/Controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/cms/procedurypromocyjneimport/Controller.php" afterPath="$PROJECT_DIR$/application/modules/cms/procedurypromocyjneimport/Controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/cms/promocjeorders/Controller.php" afterPath="$PROJECT_DIR$/application/modules/cms/promocjeorders/Controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/core/Mapper.php" afterPath="$PROJECT_DIR$/application/core/Mapper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/core/Narzedzia.php" afterPath="$PROJECT_DIR$/application/core/Narzedzia.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/core/Response.php" afterPath="$PROJECT_DIR$/application/core/Response.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/Smarty.class.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/Smarty.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/core/Smarty.php" afterPath="$PROJECT_DIR$/application/core/Smarty.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/core/View.php" afterPath="$PROJECT_DIR$/application/core/View.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/core/Zdjecie.php" afterPath="$PROJECT_DIR$/application/core/Zdjecie.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/block.textformat.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/block.textformat.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/debug.tpl" afterPath="$PROJECT_DIR$/libs/smarty/libs/debug.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/cms/produkt/views/form.tpl" afterPath="$PROJECT_DIR$/application/modules/cms/produkt/views/form.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.counter.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.counter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.cycle.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.cycle.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.fetch.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.fetch.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.html_checkboxes.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.html_checkboxes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.html_image.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.html_image.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.html_options.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.html_options.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.html_radios.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.html_radios.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.html_select_date.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.html_select_date.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.html_select_time.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.html_select_time.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.html_table.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.html_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.mailto.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.mailto.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.math.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/function.math.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/api/index.php" afterPath="$PROJECT_DIR$/www/api/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/cms/index.php" afterPath="$PROJECT_DIR$/www/cms/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/page/index.php" afterPath="$PROJECT_DIR$/www/page/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/modifier.capitalize.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/modifier.capitalize.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/modifier.date_format.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/modifier.date_format.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/modifier.debug_print_var.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/modifier.debug_print_var.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/modifier.escape.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/modifier.escape.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/modifier.regex_replace.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/modifier.regex_replace.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/modifier.replace.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/modifier.replace.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/modifier.spacify.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/modifier.spacify.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/modifier.truncate.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/modifier.truncate.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/outputfilter.trimwhitespace.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/outputfilter.trimwhitespace.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/page/pageLayout.tpl" afterPath="$PROJECT_DIR$/application/views/page/pageLayout.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/modules/page/podstrona/views/podstrona_glowna.tpl" afterPath="$PROJECT_DIR$/application/modules/page/podstrona/views/podstrona_glowna.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/shared.escape_special_chars.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/shared.escape_special_chars.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/smarty/libs/plugins/shared.make_timestamp.php" afterPath="$PROJECT_DIR$/libs/smarty/libs/plugins/shared.make_timestamp.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/page/css/style.css" afterPath="$PROJECT_DIR$/www/page/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="f2ba2546-87cb-41b2-8a47-097bf1dfd4b5" name="Default" comment="" />
     <ignored path="gsk.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -89,28 +23,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Controller.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Controller.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/modules/cms/promocjeorders/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="302" column="17" selection-start="10468" selection-end="10468" vertical-scroll-proportion="0.65" vertical-offset="4822" max-vertical-offset="6409">
+            <state line="302" column="17" selection-start="10468" selection-end="10468" vertical-scroll-proportion="-12.0" vertical-offset="4822" max-vertical-offset="6409">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserMapper.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/model/app/UserMapper.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="6" selection-start="13" selection-end="13" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="1241">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="exportForm.tpl" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="exportForm.tpl" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/modules/cms/promocjeorders/views/exportForm.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="73" selection-start="627" selection-end="638" vertical-scroll-proportion="-5.076923" vertical-offset="191" max-vertical-offset="1207">
+            <state line="12" column="49" selection-start="329" selection-end="329" vertical-scroll-proportion="-0.29288703" vertical-offset="344" max-vertical-offset="1207">
               <folding />
             </state>
           </provider>
@@ -413,7 +338,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="699" extended-state="7" />
+    <frame x="-8" y="-8" width="1296" height="699" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -509,23 +434,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/cms/promocjeorders/views/exportForm.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="73" selection-start="627" selection-end="638" vertical-scroll-proportion="-5.076923" vertical-offset="191" max-vertical-offset="1207">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/model/app/UserMapper.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="6" selection-start="13" selection-end="13" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="1241">
+        <state line="2" column="6" selection-start="13" selection-end="13" vertical-scroll-proportion="0.06896552" vertical-offset="0" max-vertical-offset="1241">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/modules/cms/promocjeorders/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="302" column="17" selection-start="10468" selection-end="10468" vertical-scroll-proportion="0.65" vertical-offset="4822" max-vertical-offset="6409">
+        <state line="302" column="17" selection-start="10468" selection-end="10468" vertical-scroll-proportion="-12.0" vertical-offset="4822" max-vertical-offset="6409">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/cms/promocjeorders/views/exportForm.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="49" selection-start="329" selection-end="329" vertical-scroll-proportion="-0.29288703" vertical-offset="344" max-vertical-offset="1207">
           <folding />
         </state>
       </provider>
