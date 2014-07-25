@@ -24,6 +24,9 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
         $userMapper = new Model_App_UserMapper();
         $response->dodajParametr('przedstawiciele', $userMapper->find());
 
+        $dystrybutorMapper = new Model_Promocje_DystrybutorMapper();
+        $response->dodajParametr('dystrybutorzy', $dystrybutorMapper->find());
+
         $response->dodajParametr('statusy', Model_Promocje_OrderStatusMapper::getAll());
         $response->dodajParametr('statusButtons', array(
             array(
@@ -99,8 +102,6 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
     {
         $response = new Core_Response();
         $response->setModuleTemplate("export");
-        $orderMapper = new Model_Promocje_OrderMapper();
-
 
         $sqlConditions = '';
         if (!empty($_POST['dateFrom']) && count($_POST['dateFrom'])) {
@@ -128,211 +129,23 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
             . $sqlConditions . '
             GROUP BY id';
 
-
-        $promocjaMapper = new Model_Promocje_PromocjaMapper;
-
+        $orderMapper = new Model_Promocje_OrderMapper();
         $orders = $orderMapper->findBySql($sql);
 
-
-        $adresMapper = new Model_Promocje_AdresMapper();
-        $userMapper = new Model_App_UserMapper();
-
-        $objPHPExcel = new PHPExcel();
-
-        $promotionIdsArray = array();
-        foreach ($orders as $order) {
-            $promotionIdsArray[$order->promotionId] = $order->promotionId;
+        $wybraneEtapy = array();
+        if (is_array($_POST['etapId'])) {
+            $wybraneEtapy = $_POST['etapId'];
         }
 
-        $sheetIndex = 0;
-        $objPHPExcel->removeSheetByIndex(0);
-        foreach ($promotionIdsArray as $promotion) {
-
-            $objPHPExcel->createSheet(NULL, $sheetIndex);
-            $objPHPExcel->setActiveSheetIndex($sheetIndex);
-
-            $sheet = $objPHPExcel->getActiveSheet();
-
-            $promocja = $promocjaMapper->findOneById($promotion);
-            $sheet->setTitle($promocja->nazwa);
-
-            $secondRowNum = 5;
-
-            // WYSRODKOWANIE TEKSTU
-            $style = array(
-                'alignment' => array(
-                    'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
-                )
-            );
-
-            $objPHPExcel->getDefaultStyle()->applyFromArray($style);
-
-            for ($col = 'A'; $col !== 'S'; $col++) {
-                $sheet
-                    ->getColumnDimension($col)
-                    ->setAutoSize(true);
-            }
-
-
-
-            $this->cellColor("L3", 'C8C8C8', $sheet);
-
-            // INFO NAD ETYKIETAMI
-            $sheet->mergeCells('B1:F1');
-            $sheet->mergeCells('B2:H2');
-
-            $sheet->SetCellValue('B1', 'UWAGA! Estymując ilości, należy podać ilość pakietów a nie gratisów.');
-            $sheet->SetCellValue('B2', 'UWAGA! Używając funkcji wklej, należy używać WYŁĄCZNIE FUNKCJI WKLEJ SPECJALNE JAKO TEKST');
-
-            $sheet->getStyle('B1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-            $sheet->getStyle('B2')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-
-            $phpColor = new PHPExcel_Style_Color();
-            $phpColor->setRGB('FF0000');
-
-            $sheet->getStyle('B1')->getFont()->setColor($phpColor);
-            $sheet->getStyle('B2')->getFont()->setColor($phpColor);
-
-            //ETYKIETA KOD
-            $sheet->SetCellValue('L2', 'KOD PRODUKTU');
-
-            // ETYKIETY PIERWSZY RZĄD
-            $objPHPExcel->setActiveSheetIndex(0);
-
-            $sheet->mergeCells('A4:D4');
-            $sheet->SetCellValue('A4', 'INFORMACJE GSK');
-
-            $sheet->mergeCells('E4:N4');
-            $sheet->SetCellValue('E4', 'INFORMACJE O DOSTAWIE');
-
-            // ETYKIETY DRUGI RZĄD
-            $titleRow = array(
-                'L.P.',
-                'PH GSK',
-                'REGIONALNY',
-                'DYSTRYBUTOR',
-                'FIRMA',
-                'MIASTO',
-                'KOD POCZTOWY',
-                'ULICA',
-                'NUMER LOKALU',
-                'OSOBA ODPOWIEDZIALNA - IMIĘ, NAZWISKO',
-                'NUMER TELEFONU'
-            );
-
-            $stageMapper = new Model_Promocje_EtapMapper();
-            $stageMapper->filterOrderBy('kolejnosc');
-            $stages = $stageMapper->find();
-
-            $stageIdsArray = array();
-            foreach ($orders as $order) {
-                foreach ($order->items as $item) {
-                    $stageIdsArray[$item['stageId']] = $item['stageId'];
-                };
-            }
-
-            $stageColIndex = chr(ord('A') + count($titleRow));
-            $stageColNums = array();
-            foreach ($stages as $stage) {
-                if (in_array($stage->id, $stageIdsArray)) {
-                    $stageColNums[$stage->id] = $stageColIndex;
-                    $titleRow[] = strtoupper($stage->nazwa);
-                    $stageColIndex++;
-                }
-            }
-
-
-            $colIndex = 'A';
-            foreach ($titleRow as $colTitle) {
-                $sheet->SetCellValue($colIndex . $secondRowNum, $colTitle);
-                $colIndex++;
-            }
-
-            $rowCount = 6;
-            $numRow = 1;
-
-            foreach ($orders as $order) {
-
-                if ($order->promotionId == $promotion) {
-
-                    $user = $userMapper->findOneById($order->przedstawicielId);
-                    $userSup = $userMapper->findOneById($user->supervisor_id);
-                    if (!empty($userSup)) {
-                        $userSupName = $userSup->name;
-                    } else {
-                        $userSupName = '';
-                    }
-
-                    $adres = $adresMapper->findOneById($order->addressId);
-
-
-                    $cellValues = [
-                        $numRow,
-                        $user->name,
-                        $userSupName,
-                        $order->dystrybutorId,
-                        $adres->firma,
-                        $adres->miejscowosc,
-                        $adres->kodPocztowy,
-                        $adres->ulica,
-                        $adres->nrLokalu,
-                        $adres->osobaOdpowiedzialna,
-                        $adres->telefon
-                    ];
-
-                    $colIndex = 'A';
-                    foreach ($cellValues as $cellValue) {
-                        $sheet->SetCellValue($colIndex . $rowCount, $cellValue);
-                        $colIndex++;
-                    }
-
-                    foreach ($order->items as $item) {
-                        Core:
-                        $sheet->SetCellValue(
-                            $stageColNums[$item['stageId']] . $rowCount,
-                            $item['amount']
-                        );
-                    }
-
-                    $rowCount++;
-                    $numRow++;
-                }
-                $lastUsedCol = $sheet->getHighestDataColumn();
-                foreach (range('A', $lastUsedCol) as $i) {
-                    $this->cellColor($i . $secondRowNum, 'C8C8C8', $sheet);
-                }
-                foreach (range('A', $lastUsedCol) as $i) {
-                    $this->cellColor($i . "4", 'C8C8C8', $sheet);
-                }
-            }
-
-
-            $sheet->SetCellValue('L3', $promocja->kod_icoguar);
-
-
-            $sheetIndex++;
-        }
-
-        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
-        $objWriter->save('../../www/cms/tmp/promocje.xlsx');
+        $exporter = new Model_Promocje_ExportExcel();
+        $exporter->generateExcelFile($orders, $wybraneEtapy);
 
         $response->dodajParametr('downloadLink', Core_Config::get('full_cms_path') . '/tmp/promocje.xlsx');
-
         return $response;
-    }
-
-    // USTAWIENIE KOLORU
-    public function cellColor($cells, $color, $sheet)
-    {
-        $sheet->getStyle($cells)->getFill()
-            ->applyFromArray(array('type' => PHPExcel_Style_Fill::FILL_SOLID,
-                'startcolor' => array('rgb' => $color)
-            ));
     }
 
     public function exportFormAction(Core_Request $request)
     {
-
         $response = new Core_Response();
         $response->setModuleTemplate("exportForm");
 
@@ -342,7 +155,6 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
         foreach ($promocje as $promocja) {
             $promocjeArr[$promocja->id] = $promocja->nazwa;
         }
-
 
         $orderStatusMapper = new Model_Promocje_OrderStatusMapper();
         $statusy = $orderStatusMapper->getAll();
@@ -363,9 +175,6 @@ class promocjeorders_Controller extends Core_CMS_Module_Controller
         $response->dodajParametr("etapy", $etapyArr);
         $response->dodajParametr("link", Core_Config::get('cms_dir') . '/' . $this->modul . '/');
 
-
         return $response;
-
     }
-
 }
